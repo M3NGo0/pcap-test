@@ -165,9 +165,10 @@ int main(int argc, char* argv[]) {
         printf("Destination Port: %d\n", ntohs(tcp_hdr->th_dport));
 
         const u_char* payload = packet + sizeof(struct libnet_ethernet_hdr) + sizeof(struct libnet_ipv4_hdr) + sizeof(struct libnet_tcp_hdr);
+        printf("%x\n",header->caplen);
         int payload_length = header->caplen - (sizeof(struct libnet_ethernet_hdr) + sizeof(struct libnet_ipv4_hdr) + sizeof(struct libnet_tcp_hdr));
 
-        printf("Payload data (hexadecimal)\n");
+        printf("Payload data\n");
         for (int i = 0; i < (payload_length > 10 ? 10 : payload_length); i++) {
             printf("%02x ", *(payload + i));
         }
