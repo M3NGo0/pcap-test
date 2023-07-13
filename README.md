@@ -1,7 +1,7 @@
 # pcap-test
 ## pcap-test.c
 ### pcap-test.c 추가 설명
-1. header 위치 정하기
+1. header 위치 정하기 </br>
 아래는 ethernet_header와 ipv4_header, tcp_header를 정의한 것을 의미한다. </br>
 아래의 사진을 보면 각 데이터 버퍼가 ehternet, ip,tcp,payload가 하나의 버퍼로 이루어진 것을 볼 수 있다. </br>
 이와 같이 통신을 할때 header와 payload 구성이 아래의 사진과 같다고 생각을 하고 각각의 ethernet,ip,tcp header가 가리키고 있는 주소를 시작위치로 설정하고 
@@ -15,8 +15,8 @@
         struct libnet_ipv4_hdr* ipv4_hdr = (struct libnet_ipv4_hdr*)(packet + sizeof(struct libnet_ethernet_hdr));
         struct libnet_tcp_hdr* tcp_hdr = (struct libnet_tcp_hdr*)(packet + sizeof(struct libnet_ethernet_hdr) + sizeof(struct libnet_ipv4_hdr));
 ```
-
-2. payload 데이터 뽑기
+ </br> </br>
+2. payload 데이터 뽑기 </br>
 payload의 경우에는 앞서 했던 것처럼 현재 packet의 위치에서 각각의 header 길이만큼을 구해서 더하면 payload 시작 위치를 알 수 있다. </br>
 이를 이용해서 payload에 접근해 데이터를 뽑는 순서로 진행하였다. </br>
 내가 어려웠다고 생각하는 부분은 payload_length를 구하는 부분이다. </br>
